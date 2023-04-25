@@ -2,33 +2,62 @@
 
 import { useState } from "react";
 import MenuButton from "./menuButton";
+import Link from "next/link";
+
+const linksTemporadas = [
+    {
+        label: 'Temporada I',
+        route: '/capitulos/temporada/1'
+    },
+    {
+        label: 'Temporada II',
+        route: '/capitulos/temporada/2'
+    },
+    {
+        label: 'Temporada III',
+        route: '/capitulos/temporada/3'
+    },
+]
 
 export default function MenuNavigation() {
     const [openMenu, setOpenMenu] = useState(false)
-    const [translateProp, setTranslateProp] = useState('translate-x-0')
+    const [openChaptersMenu, setOpenChaptersMenu] = useState(false)
 
-    const menuButtonClickHandler = () => {
-        if (translateProp === 'translate-x-0') {
-            setOpenMenu(!openMenu)
-            setTimeout(() => {
-                setTranslateProp('translate-x-full')
-            }, 0)
-        }
-        else {
-            setTranslateProp('translate-x-0')
-            setTimeout(()=>{
-                setOpenMenu(false)
-            },500)
-        }
+    let menuPosition = ''
+    let chaptersMenuPosition = ''
+
+    if (!openChaptersMenu) {
+        chaptersMenuPosition = 'right-[-200%]'
+        menuPosition = 'left-0'
     }
 
-    return <>
-        <MenuButton className={'p-1'} onClick={menuButtonClickHandler} />
-        {openMenu &&
-            <div className={`left-[-70vw] fixed ease-in-out duration-500 w-[70vw] h-full bg-white ${translateProp}`}>
+    if (openChaptersMenu){
+        menuPosition = 'left-[-100%]'
+         chaptersMenuPosition = 'right-0'
+    }
 
+
+    return <>
+        <MenuButton className='p-1' onClick={() => setOpenMenu(!openMenu)} clicked={openMenu} />
+        <div className={`left-[-100%] fixed ease-in-out duration-500 w-full h-full bg-white ${openMenu ? 'translate-x-full' : 'translate-x-0'}`}>
+            <div className="flex">
+                <ul className={`fixed p-4 ease-in-out duration-500 ${menuPosition} `}>
+                    <li>
+                        <button onClick={() => setOpenChaptersMenu(!openChaptersMenu)}>Capitulos</button>
+                    </li>
+                </ul>
+                <div className={`h-full w-full top-0 fixed p-4  ease-in-out duration-500 ${chaptersMenuPosition}`}>
+                    <button onClick={() => setOpenChaptersMenu(!openChaptersMenu)}>Atras</button>
+                    <ul>
+                        {linksTemporadas.map(({ label, route }) => {
+                            return <li key={route}>
+                                <Link href={route}>{label}</Link>
+                            </li>
+                        })}
+                    </ul>
+                </div>
             </div>
-        }
+        </div>
 
     </>
 }

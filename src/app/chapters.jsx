@@ -9,7 +9,7 @@ export default async function Chapters() {
             {chapters.slice(0, 3).map(chapter => {
                 return <li className="px-4 flex flex-col items-center">
                     <h2 className="w-72">{chapter.title}</h2>
-                    <img className="w-72" src={chapter.imgMain} alt="" />
+                    <img className="w-72" src={chapter.imgMain} alt={chapter.title} />
                     <audio className="w-72" src={chapter.file} controls></audio>
                 </li>
             })}

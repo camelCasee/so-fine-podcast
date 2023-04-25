@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
         <header className='p-1 fixed w-full bg-white'>
           <MenuNavigation />
         </header>
-        <main>
+        <main className='pt-16'>
           {children}
         </main>
         <footer className='p-1 bg-slate-200'>
