@@ -2,11 +2,13 @@
 
 import { useState } from 'react'
 
-export default function Menu({className}) {
+export default function MenuButton({className, onClick}) {
     const [clicked, setClicked] = useState(false)
 
     const clickHandler =() =>{
         setClicked(!clicked)
+
+        onClick()
     }
 
     return <button onClick={clickHandler} className={`${className} flex flex-col w-12 gap-2.5`}>
