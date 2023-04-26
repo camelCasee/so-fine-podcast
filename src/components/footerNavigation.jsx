@@ -26,7 +26,7 @@ export default function FooterNavigation() {
     return <div className="flex p-4 justify-between">
         <div className="flex justify-center flex-col gap-3">
             {RRSS.map(({ route, color, icon, viewBox }) => {
-                return <a href={route} target="_blank">
+                return <a key={route} href={route} target="_blank">
                     <svg
                         className={`h-7 w-7 ${color}`}
                         fill="currentColor"

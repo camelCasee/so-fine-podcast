@@ -2,6 +2,7 @@ import MenuNavigation from '@/components/menuNavigation'
 import './globals.css'
 import FooterNavigation from '@/components/footerNavigation'
 import Link from 'next/link'
+import DesktopNavBar from '@/components/desktopNavBar'
 
 export default function RootLayout({ children }) {
   return (
@@ -11,13 +12,20 @@ export default function RootLayout({ children }) {
       </head>
 
       <body>
-        <header className='p-4 z-10 fixed w-full bg-white'>
+        <header className='p-4 h-16 z-10 fixed w-full bg-white'>
           <Link href={'/'}>
-            <h1 className="font-bold text-xl text-center fixed w-1/2 inset-x-[25%]">So Fine Podcast</h1>
+            <h1 className="font-bold text-xl text-center fixed w-[60%] inset-x-[20%] sm:w-fit sm:inset-auto">So Fine Podcast</h1>
           </Link>
-          <MenuNavigation />
+          <nav>
+            <div className='hidden sm:block'>
+              <DesktopNavBar/>
+            </div>
+            <div className='sm:hidden'>
+              <MenuNavigation />
+            </div>
+          </nav>
         </header>
-        <main className='pt-16 pb-4'>
+        <main className='pt-20 pb-10'>
           {children}
         </main>
         <footer className='p-1 bg-slate-200'>
