@@ -22,19 +22,37 @@ const RRSS = [
     }
 ]
 
-
 export default function FooterNavigation() {
-    return <div className="flex gap-3">
-        {RRSS.map(({ route, color, icon, viewBox }) => {
-            return <a href={route} target="_blank">
-                <svg
-                    className={`h-7 w-7 ${color}`}
-                    fill="currentColor"
-                    viewBox={viewBox || `0 0 24 24`}>
-                    <path
-                        d={icon} />
-                </svg>
+    return <div className="flex p-4 justify-between">
+        <div className="flex justify-center flex-col gap-3">
+            {RRSS.map(({ route, color, icon, viewBox }) => {
+                return <a href={route} target="_blank">
+                    <svg
+                        className={`h-7 w-7 ${color}`}
+                        fill="currentColor"
+                        viewBox={viewBox || `0 0 24 24`}>
+                        <path
+                            d={icon} />
+                    </svg>
+                </a>
+            })}
+        </div>
+        <div className="flex flex-col items-center gap-2">
+            <p>Escúchanos en</p>
+            <a className="bg-black text-white text-center font-semibold text-sm p-1 w-full rounded-md" href='' target="_blank">
+                APPLE PODCASTS
             </a>
-        })}
+            <div className="flex justify-between w-full">
+                <a className="bg-black text-white text-center font-semibold text-sm p-1 px-2 rounded-md" href='' target="_blank">
+                    SPOTIFY
+                </a>
+                <a className="bg-black text-white text-center font-semibold text-sm p-1 px-2 rounded-md" href='' target="_blank">
+                    IVOOX
+                </a>
+            </div>
+            <a className="bg-black text-white text-center font-semibold text-sm p-1 px-3 rounded-md" href='' target="_blank">
+                GOOGLE PODCASTS
+            </a>
+        </div>
     </div>
 }

@@ -1,8 +1,9 @@
 'use client'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MenuButton from "./menuButton";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const linksTemporadas = [
     {
@@ -17,14 +18,24 @@ const linksTemporadas = [
         label: 'Temporada III',
         route: '/capitulos/temporada/3'
     },
+    {
+        label: 'Todos los capitulos',
+        route: '/capitulos'
+    },
 ]
 
 export default function MenuNavigation() {
     const [openMenu, setOpenMenu] = useState(false)
     const [openChaptersMenu, setOpenChaptersMenu] = useState(false)
 
+    const route = usePathname()
+
     let menuPosition = ''
     let chaptersMenuPosition = ''
+
+    useEffect(()=>{
+        setOpenMenu(false)
+    }, [route])
 
     if (!openChaptersMenu) {
         if(openMenu) chaptersMenuPosition = 'right-[-100%]'
