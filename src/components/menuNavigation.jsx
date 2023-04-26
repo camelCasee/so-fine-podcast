@@ -27,19 +27,19 @@ export default function MenuNavigation() {
     let chaptersMenuPosition = ''
 
     if (!openChaptersMenu) {
-        chaptersMenuPosition = 'right-[-200%]'
+        if(openMenu) chaptersMenuPosition = 'right-[-100%]'
+        else if(!openMenu)chaptersMenuPosition = 'right-[-200%]'
         menuPosition = 'left-0'
     }
 
     if (openChaptersMenu){
+        chaptersMenuPosition = 'right-0'
         menuPosition = 'left-[-100%]'
-         chaptersMenuPosition = 'right-0'
     }
-
 
     return <>
         <MenuButton className='p-1' onClick={() => setOpenMenu(!openMenu)} clicked={openMenu} />
-        <div className={`left-[-100%] fixed ease-in-out duration-500 w-full h-full bg-white ${openMenu ? 'translate-x-full' : 'translate-x-0'}`}>
+        <div className={`left-[-100%] z-10 fixed ease-in-out duration-500 w-full h-full bg-white ${openMenu ? 'translate-x-full' : 'translate-x-0'}`}>
             <div className="flex">
                 <ul className={`fixed p-4 ease-in-out duration-500 ${menuPosition} `}>
                     <li>
@@ -56,6 +56,8 @@ export default function MenuNavigation() {
                         })}
                     </ul>
                 </div>
+            </div>
+            <div className="fixed h-full w-1/12 bg-white right-0">
             </div>
         </div>
 

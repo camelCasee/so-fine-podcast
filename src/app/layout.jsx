@@ -10,7 +10,7 @@ export default function RootLayout({ children }) {
       </head>
 
       <body>
-        <header className='p-1 fixed w-full bg-white'>
+        <header className='p-1 z-10 fixed w-full bg-white'>
           <MenuNavigation />
         </header>
         <main className='pt-16'>
