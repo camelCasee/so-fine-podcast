@@ -51,7 +51,7 @@ export default function DesktopNavBar() {
                   <span onMouseOver={openMenuHandler} onClick={openMenuHandler} onMouseLeave={closeMenuHandler} className="z-10 cursor-pointer">Capitulos</span>
                   <div className="relative z-10">
                         <div onMouseOver={openMenuHandler} onMouseLeave={closeMenuHandler}
-                              className={`${chaptersMenuStatus} transition-opacity duration-500 ease-out shadow-md p-2 rounded-md w-fit bg-white`}>
+                              className={`${chaptersMenuStatus} transition-opacity duration-400 ease-out shadow-md p-2 rounded-md w-fit bg-white`}>
                               <ul className="cursor-auto">
                                     {linksTemporadas.map(({ label, route }) => {
                                           return <li key={route}>

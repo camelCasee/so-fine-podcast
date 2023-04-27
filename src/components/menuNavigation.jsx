@@ -30,16 +30,16 @@ export default function MenuNavigation() {
 
     const route = usePathname()
 
-    let menuPosition = ''
-    let chaptersMenuPosition = ''
-
     useEffect(() => {
         setOpenMenu(false)
     }, [route])
 
+    let menuPosition = ''
+    let chaptersMenuPosition = ''
+
     if (!openChaptersMenu) {
-        if (openMenu) chaptersMenuPosition = 'right-[-100%]'
-        else if (!openMenu) chaptersMenuPosition = 'right-[-200%] duration-0'
+        if (openMenu) chaptersMenuPosition = 'right-[-100%] opacity-0'
+        else if (!openMenu) chaptersMenuPosition = 'right-[-200%] opacity-0 duration-0'
         menuPosition = 'left-0'
     }
 
@@ -59,7 +59,7 @@ export default function MenuNavigation() {
                         <button onClick={() => setOpenChaptersMenu(!openChaptersMenu)}>Capitulos</button>
                     </li>
                 </ul>
-                <div className={`h-full w-full top-0 fixed p-4 ease-in-out duration-500 ${chaptersMenuPosition}`}>
+                <div className={`w-full top-0 fixed p-4 ease-in-out duration-500 ${chaptersMenuPosition}`}>
                     <button onClick={() => setOpenChaptersMenu(!openChaptersMenu)}>Atras</button>
                     <ul>
                         {linksTemporadas.map(({ label, route }) => {
@@ -69,8 +69,6 @@ export default function MenuNavigation() {
                         })}
                     </ul>
                 </div>
-            </div>
-            <div className="fixed h-full w-1/12 bg-white right-0">
             </div>
         </div>
 
