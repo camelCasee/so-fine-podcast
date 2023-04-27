@@ -23,7 +23,7 @@ const RRSS = [
 ]
 
 export default function FooterNavigation() {
-    return <div className="flex p-4 justify-between">
+    return <div className="flex justify-between">
         <div className="flex justify-center flex-col gap-3">
             {RRSS.map(({ route, color, icon, viewBox }) => {
                 return <a key={route} href={route} target="_blank">
@@ -39,18 +39,18 @@ export default function FooterNavigation() {
         </div>
         <div className="flex flex-col items-center gap-2">
             <p>Escúchanos en</p>
-            <a className="bg-black text-white text-center font-semibold text-sm p-1 w-full rounded-md" href='' target="_blank">
+            <a className="bg-black text-white text-center font-semibold text-sm p-1 w-full rounded-md" href='https://podcasts.apple.com/es/podcast/so-fine-podcast/id1628356408' target="_blank">
                 APPLE PODCASTS
             </a>
             <div className="flex justify-between w-full">
-                <a className="bg-black text-white text-center font-semibold text-sm p-1 px-2 rounded-md" href='' target="_blank">
+                <a className="bg-black text-white text-center font-semibold text-sm p-1 px-2 rounded-md" href='https://open.spotify.com/show/06OnGCZkGbplFOYmn2LU0J' target="_blank">
                     SPOTIFY
                 </a>
-                <a className="bg-black text-white text-center font-semibold text-sm p-1 px-2 rounded-md" href='' target="_blank">
+                <a className="bg-black text-white text-center font-semibold text-sm p-1 px-2 rounded-md" href='https://www.ivoox.com/podcast-so-fine-podcast_sq_f11556093_1.html' target="_blank">
                     IVOOX
                 </a>
             </div>
-            <a className="bg-black text-white text-center font-semibold text-sm p-1 px-3 rounded-md" href='' target="_blank">
+            <a className="bg-black text-white text-center font-semibold text-sm p-1 px-3 rounded-md" href='https://podcasts.google.com/feed/aHR0cHM6Ly93d3cuaXZvb3guY29tL3NvLWZpbmUtcG9kY2FzdF9mZ19mMTE1NTYwOTNfZmlsdHJvXzEueG1s?hl=es' target="_blank">
                 GOOGLE PODCASTS
             </a>
         </div>
