@@ -33,23 +33,25 @@ export default function MenuNavigation() {
     let menuPosition = ''
     let chaptersMenuPosition = ''
 
-    useEffect(()=>{
+    useEffect(() => {
         setOpenMenu(false)
     }, [route])
 
     if (!openChaptersMenu) {
-        if(openMenu) chaptersMenuPosition = 'right-[-100%]'
-        else if(!openMenu)chaptersMenuPosition = 'right-[-200%]'
+        if (openMenu) chaptersMenuPosition = 'right-[-100%]'
+        else if (!openMenu) chaptersMenuPosition = 'right-[-200%] duration-0'
         menuPosition = 'left-0'
     }
 
-    if (openChaptersMenu){
+    if (openChaptersMenu) {
         chaptersMenuPosition = 'right-0'
         menuPosition = 'left-[-100%]'
     }
 
     return <>
-        <MenuButton className='p-1' onClick={() => setOpenMenu(!openMenu)} clicked={openMenu} />
+        <div className="p-4">
+            <MenuButton className='p-1' onClick={() => setOpenMenu(!openMenu)} clicked={openMenu} />
+        </div>
         <div className={`left-[-100%] z-10 fixed ease-in-out duration-500 w-full h-full bg-white ${openMenu ? 'translate-x-full' : 'translate-x-0'}`}>
             <div className="flex">
                 <ul className={`fixed p-4 ease-in-out duration-500 ${menuPosition} `}>
@@ -57,7 +59,7 @@ export default function MenuNavigation() {
                         <button onClick={() => setOpenChaptersMenu(!openChaptersMenu)}>Capitulos</button>
                     </li>
                 </ul>
-                <div className={`h-full w-full top-0 fixed p-4  ease-in-out duration-500 ${chaptersMenuPosition}`}>
+                <div className={`h-full w-full top-0 fixed p-4 ease-in-out duration-500 ${chaptersMenuPosition}`}>
                     <button onClick={() => setOpenChaptersMenu(!openChaptersMenu)}>Atras</button>
                     <ul>
                         {linksTemporadas.map(({ label, route }) => {
