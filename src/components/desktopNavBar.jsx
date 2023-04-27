@@ -6,57 +6,63 @@ import { usePathname } from "next/navigation"
 
 const linksTemporadas = [
       {
-          label: 'Temporada I',
-          route: '/capitulos/temporada/1'
+            label: 'Temporada I',
+            route: '/capitulos/temporada/1'
       },
       {
-          label: 'Temporada II',
-          route: '/capitulos/temporada/2'
+            label: 'Temporada II',
+            route: '/capitulos/temporada/2'
       },
       {
-          label: 'Temporada III',
-          route: '/capitulos/temporada/3'
+            label: 'Temporada III',
+            route: '/capitulos/temporada/3'
       },
       {
-          label: 'Todos los capitulos',
-          route: '/capitulos'
+            label: 'Todos los capitulos',
+            route: '/capitulos'
       },
-  ]
+]
 
 export default function DesktopNavBar() {
       const [chaptersMenuStatus, setChaptersMenuStatus] = useState('opacity-0')
-      const [blockToCloseMenuStatus, setBlockToCloseMenuStatus] = useState('hidden')
+      const [divToCloseMenuStatus, setDivToCloseMenuStatus] = useState('hidden')
+      const [divToUnhoverMenu, setDivToUnhoverMenu] = useState('')
 
       const route = usePathname()
 
-      useEffect(()=>{
+      useEffect(() => {
             closeMenuHandler()
       }, [route])
 
       const openMenuHandler = () => {
             setChaptersMenuStatus('opacity-100')
-            setBlockToCloseMenuStatus('')
+            setDivToCloseMenuStatus('')
+            setDivToUnhoverMenu('hidden')
       }
 
       const closeMenuHandler = () => {
             setChaptersMenuStatus('opacity-0')
-            setBlockToCloseMenuStatus('hidden')
+            setDivToCloseMenuStatus('hidden')
+            setDivToUnhoverMenu('')
       }
 
       return <div className="h-16 flex justify-center">
-            <div className="items-center flex flex-col">
-                  <span onMouseOver={openMenuHandler} onClick={openMenuHandler} onMouseLeave={closeMenuHandler} className="mt-4 z-10 cursor-pointer">Capitulos</span>
-                  <div onMouseOver={openMenuHandler} onMouseLeave={closeMenuHandler} 
-                  className={`${chaptersMenuStatus} z-20 transition-all duration-500 ease-out shadow-md p-2 rounded-md w-fit bg-white`}>
-                        <ul className="z-20 cursor-auto">
-                        {linksTemporadas.map(({ label, route }) => {
-                            return <li key={route}>
-                                <Link href={route}>{label}</Link>
-                            </li>
-                        })}
-                        </ul>
+            <div className="mt-4 items-center flex flex-col">
+                  <span onMouseOver={openMenuHandler} onClick={openMenuHandler} onMouseLeave={closeMenuHandler} className="z-10 cursor-pointer">Capitulos</span>
+                  <div className="relative z-10">
+                        <div onMouseOver={openMenuHandler} onMouseLeave={closeMenuHandler}
+                              className={`${chaptersMenuStatus} transition-opacity duration-500 ease-out shadow-md p-2 rounded-md w-fit bg-white`}>
+                              <ul className="cursor-auto">
+                                    {linksTemporadas.map(({ label, route }) => {
+                                          return <li key={route}>
+                                                <Link href={route}>{label}</Link>
+                                          </li>
+                                    })}
+                              </ul>
+                        </div>
+                        <div className={`${divToUnhoverMenu} absolute inset-0 h-full w-full`}></div>
                   </div>
             </div>
-            <div onClick={closeMenuHandler} className={`${blockToCloseMenuStatus} absolute h-screen w-screen`}></div>
+            <div onClick={closeMenuHandler} className={`${divToCloseMenuStatus} absolute h-screen w-screen`}></div>
       </div>
 }
