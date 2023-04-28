@@ -1,8 +1,14 @@
 import retrieveSeasonChapters from "@/logic/retrieveSeasonChapters"
+import { promises as fs} from 'fs'
 
 export default async function SeasonChapters({ season }) {
-    const chapters = await retrieveSeasonChapters(season)
-        .catch(err =>  console.error('failed to read file', err))
+    // const chapters = await retrieveSeasonChapters(season)
+    //     .catch(err =>  console.error('failed to read file', err))
+    const directory = './data.json'
+
+    const data = await fs.readFile(directory, 'utf8')
+
+    const chapters = JSON.parse(data)
 
     return <div className="px-7">
         <span>Temporada {season}</span>
