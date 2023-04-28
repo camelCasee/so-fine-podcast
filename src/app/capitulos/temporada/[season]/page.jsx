@@ -1,7 +1,10 @@
 import SeasonChapters from "./seasonChapters";
 
-export default function Seasons() {
+export default function SeasonsPage({ params }) {
+    const { season } = params
+
     return <div>
-        <SeasonChapters/>
+        <p></p>
+        <SeasonChapters season={season} />
     </div>
 }

@@ -1,8 +1,8 @@
-import retrieveChapters from "@/logic/retrieveChapters"
+import retrieveLastChapters from "@/logic/retrieveLastChapters"
 
 export default async function Chapters() {
 
-    const chapters = await retrieveChapters()
+    const chapters = await retrieveLastChapters()
 
     return <div className="px-7">
         <ul className="responsive-grid gap-y-4 items-center">
