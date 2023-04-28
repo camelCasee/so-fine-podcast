@@ -1,11 +1,8 @@
 import retrieveSeasonChapters from "@/logic/retrieveSeasonChapters"
 
 export default async function SeasonChapters({ season }) {
-    let error
     const chapters = await retrieveSeasonChapters(season)
-        .catch(err =>  error = err)
-
-    if(error) return <div>{error.message}</div>
+        .catch(err =>  console.error('failed to read file', err))
 
     return <div className="px-7">
         <span>Temporada {season}</span>
