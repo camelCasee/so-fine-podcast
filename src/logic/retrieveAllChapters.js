@@ -1,7 +1,7 @@
 import { promises as fs} from 'fs'
 
 export default async function retrieveAllChapters(){
-    const directory = './chapters/all-chapters.json'
+    const directory = './data.json'
 
     const data = await fs.readFile(directory, 'utf8')
 
