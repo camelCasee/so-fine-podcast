@@ -7,15 +7,15 @@ import { usePathname } from "next/navigation"
 const linksTemporadas = [
       {
             label: 'Temporada I',
-            route: '/capitulos/temporada/1'
+            route: '/capitulos/temporada/primera'
       },
       {
             label: 'Temporada II',
-            route: '/capitulos/temporada/2'
+            route: '/capitulos/temporada/segunda'
       },
       {
             label: 'Temporada III',
-            route: '/capitulos/temporada/3'
+            route: '/capitulos/temporada/tercera'
       },
       {
             label: 'Todos los capitulos',
