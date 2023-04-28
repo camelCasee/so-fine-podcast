@@ -1,4 +1,4 @@
-import retrieveAllChapters from "@/logic/retrieveSeasonChapters"
+import retrieveAllChapters from "@/logic/retrieveAllChapters"
 
 export default async function AllChapters() {
     const chapters =  await retrieveAllChapters()

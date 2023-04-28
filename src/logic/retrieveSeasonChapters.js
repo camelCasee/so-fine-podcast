@@ -1,7 +1,7 @@
 import { promises as fs} from 'fs'
 
-export default async function retrieveAllChapters(){
-    const directory = './src/chapters/all-chapters.json'
+export default async function retrieveSeasonChapters(season){
+    const directory = `./src/chapters/season-${season}.json`
 
     const data = await fs.readFile(directory)
 
