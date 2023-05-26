@@ -21,6 +21,10 @@ const linksTemporadas = [
             label: 'Todos los capitulos',
             route: '/capitulos'
       },
+      {
+            label: 'Contacto',
+            route: '/contacto'
+      }
 ]
 
 export default function DesktopNavBar() {
