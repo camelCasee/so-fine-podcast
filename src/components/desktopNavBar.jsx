@@ -28,9 +28,8 @@ const linksTemporadas = [
 ]
 
 export default function DesktopNavBar() {
-      const [chaptersMenuStatus, setChaptersMenuStatus] = useState('opacity-0')
-      const [divToCloseMenuStatus, setDivToCloseMenuStatus] = useState('hidden')
-      const [divToUnhoverMenu, setDivToUnhoverMenu] = useState('')
+      const [menuOpen, setMenuOpen] = useState()
+      const [divToCloseMenuOpen, setDivToCloseMenuOpen] = useState()
 
       const route = usePathname()
 
@@ -39,23 +38,21 @@ export default function DesktopNavBar() {
       }, [route])
 
       const openMenuHandler = () => {
-            setChaptersMenuStatus('opacity-100')
-            setDivToCloseMenuStatus('')
-            setDivToUnhoverMenu('hidden')
+            setMenuOpen(true)
+            setDivToCloseMenuOpen(true)
       }
 
       const closeMenuHandler = () => {
-            setChaptersMenuStatus('opacity-0')
-            setDivToCloseMenuStatus('hidden')
-            setDivToUnhoverMenu('')
+            setMenuOpen()
+            setDivToCloseMenuOpen()
       }
 
       return <div className="h-16 flex justify-center">
             <div className="mt-4 items-center flex flex-col">
                   <span onMouseOver={openMenuHandler} onClick={openMenuHandler} onMouseLeave={closeMenuHandler} className="z-10 cursor-pointer">Capitulos</span>
-                  <div className="relative z-10">
+                  {menuOpen && <div className="relative z-10">
                         <div onMouseOver={openMenuHandler} onMouseLeave={closeMenuHandler}
-                              className={`${chaptersMenuStatus} transition-opacity duration-300 ease-out shadow-md p-2 rounded-md w-fit bg-white`}>
+                              className={`transition-opacity duration-300 ease-out shadow-md p-2 rounded-md w-fit bg-white`}>
                               <ul className="cursor-auto">
                                     {linksTemporadas.map(({ label, route }) => {
                                           return <li key={route}>
@@ -64,9 +61,12 @@ export default function DesktopNavBar() {
                                     })}
                               </ul>
                         </div>
-                        <div className={`${divToUnhoverMenu} absolute inset-0 h-full w-full`}></div>
                   </div>
+                  }
             </div>
-            <div onClick={closeMenuHandler} className={`${divToCloseMenuStatus} absolute h-screen w-screen`}></div>
+            {divToCloseMenuOpen &&
+                  <div onClick={closeMenuHandler} className={`absolute h-screen w-screen`}>
+                  </div>
+            }
       </div>
 }
