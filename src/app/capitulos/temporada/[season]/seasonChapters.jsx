@@ -1,10 +1,12 @@
 // import retrieveSeasonChapters from "@/logic/retrieveSeasonChapters"
 import SEASON_1 from "@/chapters/season-1"
+import SEASON_2 from "@/chapters/season-2"
+import SEASON_3 from "@/chapters/season-3"
 
 export default async function SeasonChapters({ season }) {
     // const chapters = await retrieveSeasonChapters(season)
     //     .catch(err =>  console.error('failed to read file', err))
-    const chapters = SEASON_1
+    const chapters = season === '1' ? SEASON_1 : season === '2' ? SEASON_2 : season === '3' ? SEASON_3: []
 
     return <div className="px-7">
         <span>Temporada {season}</span>
