@@ -71,7 +71,6 @@ const SEASON_1 = [
    },
    {
     "imgMain": "https://static-1.ivoox.com/audios/8/7/b/1/87b131e8beaae00766e21c0a5ac2757c_XXL.jpg",
-    "imgMini": null,
     "title": "El sonido en el tiempo: Del Fonógrafo al Vinilo. Parte I",
     "author": "So Fine Podcast",
     "category": "Audios de Pop y Pop-Rock",
