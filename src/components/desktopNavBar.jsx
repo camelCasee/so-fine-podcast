@@ -6,21 +6,17 @@ import { usePathname } from "next/navigation"
 
 const linksTemporadas = [
       {
-            label: 'Temporada I',
+            label: 'Primera temporada',
             route: '/capitulos/temporada/1'
-      },
-      {
-            label: 'Temporada II',
+        },
+        {
+            label: 'Segunda temporada',
             route: '/capitulos/temporada/2'
-      },
-      {
-            label: 'Temporada III',
+        },
+        {
+            label: 'Tercera temporada',
             route: '/capitulos/temporada/3'
-      },
-      {
-            label: 'Todos los capitulos',
-            route: '/capitulos'
-      },
+        },
       {
             label: 'Contacto',
             route: '/contacto'

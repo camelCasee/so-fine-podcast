@@ -7,25 +7,17 @@ import { usePathname } from "next/navigation";
 
 const linksTemporadas = [
     {
-        label: 'Temporada I',
+        label: 'Primera temporada',
         route: '/capitulos/temporada/1'
     },
     {
-        label: 'Temporada II',
+        label: 'Segunda temporada',
         route: '/capitulos/temporada/2'
     },
     {
-        label: 'Temporada III',
+        label: 'Tercera temporada',
         route: '/capitulos/temporada/3'
     },
-    {
-        label: 'Todos los capitulos',
-        route: '/capitulos'
-    },
-    {
-        label: 'Contacto',
-        route: '/contacto'
-    }
 ]
 
 export default function MenuNavigation() {
@@ -61,6 +53,9 @@ export default function MenuNavigation() {
                 <ul className={`fixed p-4 ease-in-out duration-500 ${menuPosition} `}>
                     <li>
                         <button onClick={() => setOpenChaptersMenu(!openChaptersMenu)}>Capitulos</button>
+                    </li>
+                    <li>
+                        <Link href={'/contacto'}>Contacto</Link>
                     </li>
                 </ul>
                 <div className={`w-full top-0 fixed p-4 ease-in-out duration-500 ${chaptersMenuPosition}`}>
