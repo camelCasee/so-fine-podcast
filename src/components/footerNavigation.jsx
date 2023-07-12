@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 const RRSS = [
     {
         route: 'https://www.instagram.com/sofinepodcast/',
@@ -23,7 +25,8 @@ const RRSS = [
 ]
 
 export default function FooterNavigation() {
-    return <div className="flex justify-between">
+    return (
+    <div className="flex justify-between">
         <div className="flex justify-center flex-col gap-3">
             {RRSS.map(({ route, color, icon, viewBox }) => {
                 return <a key={route} href={route} target="_blank">
@@ -37,7 +40,14 @@ export default function FooterNavigation() {
                 </a>
             })}
         </div>
-        <div className="flex flex-col items-center gap-2">
+        <div>
+            <Image src="/../public/images/SFPPortada.jpeg" 
+            alt="So Fine Podcast portada" 
+            width = {200}
+            height={100}
+            />
+        </div>
+        <div className="flex flex-col justify-center items-center gap-2">
             <p>Escúchanos en</p>
             <a className="bg-black text-white text-center font-semibold text-sm p-1 w-full rounded-md" href='https://podcasts.apple.com/es/podcast/so-fine-podcast/id1628356408' target="_blank">
                 APPLE PODCASTS
@@ -55,4 +65,5 @@ export default function FooterNavigation() {
             </a>
         </div>
     </div>
+    )
 }
